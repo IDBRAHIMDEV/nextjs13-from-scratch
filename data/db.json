@@ -1,0 +1,45 @@
+{
+    "courses": [
+      {
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ndgpEj1YRAqrlS0gNZBb",
+        "title": "Learn how to learn",
+        "body": "learn all about the web development front and backend using the javascript language",
+        "active": true,
+        "id": 1
+      },
+      {
+        "title": "Learn Django ",
+        "body": "Learn Django From Scratch to create a web application using python",
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/PU65W4VzTB205p8JT7PG",
+        "tags": [],
+        "category": "",
+        "active": true,
+        "id": 2
+      },
+      {
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/TZLXpJ9ORhmBgJUs1v5A",
+        "title": "Learn Python 10",
+        "body": "learn python to became an analytics developer",
+        "active": true,
+        "id": 3
+      },
+      {
+        "title": "Learn Spring boot",
+        "body": "Learn how to create a web application with Spring boot using Java",
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/4jgHzQESLa2F5uccFGc2",
+        "id": 4
+      },
+      {
+        "title": "Learn Angular",
+        "body": "angular 16 coming soon",
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/E91FpFwIRW216LqpMIY6",
+        "id": 5
+      },
+      {
+        "title": "Learn Vue 3",
+        "body": "learn frontend app from scratch with Vue and VueX",
+        "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/VXYNEvjqRvaVy7cvy0he",
+        "id": 6
+      }
+    ]
+  }

@@ -1,3 +1,3 @@
-export default interface CourseProps {
+export default interface Course {
     params: { slug: string[] }
 }
