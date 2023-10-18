@@ -12,7 +12,7 @@ const CoursesPage = async () => {
     <>
         <h1>List of courses</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 m-4 content-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 content-center">
             { courses.map(course => (
                 <CourseCard key={course.id} course={course} />
             )) }

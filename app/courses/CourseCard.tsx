@@ -11,7 +11,7 @@ const CourseCard = ({course}: Props) => {
 
   return (
     <>
-        <div className="card w-96 bg-base-100 shadow-xl" key={course.id}>
+        <div className="card bg-base-100 shadow-xl m-3" key={course.id}>
                     <figure><img src={course.image} alt={course.title} /></figure>
                     <div className="card-body">
                     <h2 className="card-title">{course.title}</h2>
