@@ -1,37 +1,77 @@
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/prisma/client";
 
-
-interface Props {
-    params: {id: number}
+interface User {
+    id?: number;
+    name: string;
+    email: string;
 }
 
-export function GET(request: NextRequest, {params}: Props) {
+interface Props {
+    params: {id: string}
+}
 
-    if(params.id >= 5) {
+export async function GET(request: NextRequest, {params}: Props) {
+
+    const user = await prisma.user.findUnique({
+        where: {
+            id: +params.id
+        }
+    })
+
+    if(!user) {
         return NextResponse.json({error: 'user not found'}, {status: 404})
     }
     
-    return NextResponse.json({id: params.id, name: 'example'}, {status: 200})
+    return NextResponse.json(user, {status: 200})
 }
 
-export function PUT(request: NextRequest, { params}: Props) {
+export async function PUT(request: NextRequest, { params}: Props) {
 
-    if(params.id >= 5) {
+    const currentUser = await prisma.user.findUnique({
+        where: {
+            id: +params.id
+        }
+    })
+
+    if(!currentUser) {
         return NextResponse.json({error: 'user not found'}, {status: 404})
     }
 
-    return NextResponse.json({
-        id: params.id, name: 'salam'
-    }, {status: 202})
+    const body = await request.json();
+
+    const user = await prisma.user.update({
+        data: {
+            name: body.name,
+            email: body.email 
+        },
+        where: {
+            id: +params.id
+        }
+    })
+
+    return NextResponse.json(user, {status: 202})
 }
 
 
-export function DELETE(request: NextRequest, { params}: Props) {
+export async function DELETE(request: NextRequest, { params}: Props) {
    
-    if(params.id >= 5) {
+    const currentUser = await prisma.user.findUnique({
+        where: {
+            id: +params.id
+        }
+    })
+
+    if(!currentUser) {
         return NextResponse.json({error: 'user not found'}, {status: 404})
     }
 
-    return NextResponse.json({message: 'User is deleted'})
+    await prisma.user.delete({
+        where: {
+            id: +params.id
+        }
+    })
+
+    return new Response(null, {status: 204})
 
 }
