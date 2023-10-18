@@ -18,3 +18,13 @@ model User {
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
+
+model Course {
+  id        Int      @id @default(autoincrement())
+  title     String
+  body      String
+  image     String
+  active    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

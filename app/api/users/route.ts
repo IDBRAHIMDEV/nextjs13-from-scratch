@@ -19,6 +19,16 @@ export async function POST(request: NextRequest) {
 
     const body: User  = await request.json()
 
+    const currentUser = await prisma.user.findUnique({
+        where: {
+            email: body.email
+        }
+    })
+
+    if(currentUser) {
+        return NextResponse.json({error: `User already Exist with this email address: ${body.email}`}, {status: 400})
+    }
+
     const user = await prisma.user.create({
         data: {
             name: body.name,
