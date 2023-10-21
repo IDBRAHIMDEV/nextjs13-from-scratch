@@ -1,38 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/app/lib/db";
 
-interface User {
+interface Category {
   id?: number;
   name: string;
-  email: string;
+  active: boolean;
 }
 
 export async function GET(request: NextRequest) {
-  const users = await db.user.findMany();
+  const categories = await db.category.findMany();
 
-  return NextResponse.json(users);
+  return NextResponse.json(categories);
 }
 
 export async function POST(request: NextRequest) {
-  const body: User = await request.json();
+  const body: Category = await request.json();
 
-  const currentUser = await db.user.findUnique({
+  const currentCategory = await db.category.findFirst({
     where: {
-      email: body.email,
+      name: body.name,
     },
   });
 
-  if (currentUser) {
+  if (currentCategory) {
     return NextResponse.json(
-      { error: `User already Exist with this email address: ${body.email}` },
+      {
+        error: `category already Exist with this name: ${body.name}`,
+      },
       { status: 400 }
     );
   }
 
-  const user = await db.user.create({
+  const category = await db.category.create({
     data: {
       name: body.name,
-      email: body.email,
     },
   });
 
@@ -40,5 +41,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "name is required !" }, { status: 400 });
   }
 
-  return NextResponse.json(user, { status: 201 });
+  return NextResponse.json(category, { status: 201 });
 }
