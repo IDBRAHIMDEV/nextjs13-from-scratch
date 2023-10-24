@@ -9,9 +9,6 @@ const Navbar = () => {
 
   const {status, data: session} = useSession()
 
-  console.log('status', status)
-  console.log('data', session)
-
   return (
     <>
         <div className="navbar bg-base-100">
