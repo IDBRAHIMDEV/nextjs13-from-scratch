@@ -17,14 +17,27 @@ model User {
   active   Boolean  @default(true)
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+  courses  Course[]
+}
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String
+  active   Boolean  @default(false)
+  courses  Course[]
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
 
 model Course {
-  id        Int      @id @default(autoincrement())
-  title     String
-  body      String
-  image     String
-  active    Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  image      String
+  categoryId Int
+  userId     Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  createAt   DateTime @default(now())
+  updateAt   DateTime @updatedAt
 }
