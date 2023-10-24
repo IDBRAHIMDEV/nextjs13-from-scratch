@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
@@ -16,6 +17,9 @@ const Navbar = () => {
                     <li><Link href="/users">Users</Link></li>
                     <li><Link href="/about">About</Link></li>
                     <li><Link href="/contact">Contact</Link></li>
+                    <li>
+                     <UserButton afterSignOutUrl='/' />
+                    </li>
                 </ul>
             </div>
             </div>
